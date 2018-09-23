@@ -5,7 +5,6 @@ class BreweriesController < ApplicationController
   # GET /breweries.json
   def index
     @breweries = Brewery.all
-    render :index
   end
 
   # GET /breweries/1
@@ -15,7 +14,7 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/new
   def new
-    # @brewery = Brewery.new
+    @brewery = Brewery.new
   end
 
   # GET /breweries/1/edit
