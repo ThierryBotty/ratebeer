@@ -1,0 +1,303 @@
+[1] pry(main)> b = Beer.first
+  Beer Load (0.5ms)  SELECT  "beers".* FROM "beers" ORDER BY "beers"."id" ASC LIMIT ?  [["LIMIT", 1]]
+=> #<Beer:0x00007ffff14554b8
+ id: 1,
+ name: "Iso 3",
+ style: "Lager",
+ brewery_id: 1,
+ created_at: Sun, 23 Sep 2018 18:46:02 UTC +00:00,
+ updated_at: Sun, 23 Sep 2018 18:46:02 UTC +00:00>
+[2] pry(main)> > b.ratings.create score: 10
+SyntaxError: unexpected '>', expecting end-of-input
+> b.ratings.create score: 10
+^
+[2] pry(main)> > b.ratings.create score: 21
+SyntaxError: unexpected '>', expecting end-of-input
+> b.ratings.create score: 21
+^
+[2] pry(main)> b.ratings.create score: 10
+   (0.1ms)  begin transaction
+  Rating Create (2.5ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 10], ["beer_id", 1], ["created_at", "2018-09-26 16:05:31.323222"], ["updated_at", "2018-09-26 16:05:31.323222"]]
+   (24.2ms)  commit transaction
+=> #<Rating:0x00007faa5c12d4d8
+ id: 1,
+ score: 10,
+ beer_id: 1,
+ created_at: Wed, 26 Sep 2018 16:05:31 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:05:31 UTC +00:00>
+[3] pry(main)> b.ratings.create score: 21
+   (0.1ms)  begin transaction
+  Rating Create (2.7ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 21], ["beer_id", 1], ["created_at", "2018-09-26 16:05:35.432660"], ["updated_at", "2018-09-26 16:05:35.432660"]]
+   (27.5ms)  commit transaction
+=> #<Rating:0x00007ffff1006a38
+ id: 2,
+ score: 21,
+ beer_id: 1,
+ created_at: Wed, 26 Sep 2018 16:05:35 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:05:35 UTC +00:00>
+[4] pry(main)> b.ratings.create score: 17
+   (0.1ms)  begin transaction
+  Rating Create (2.9ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 17], ["beer_id", 1], ["created_at", "2018-09-26 16:05:38.617403"], ["updated_at", "2018-09-26 16:05:38.617403"]]
+   (36.4ms)  commit transaction
+=> #<Rating:0x00007ffff0a69a08
+ id: 3,
+ score: 17,
+ beer_id: 1,
+ created_at: Wed, 26 Sep 2018 16:05:38 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:05:38 UTC +00:00>
+[5] pry(main)> b = Beer.create name: 'anonymous', style: 'watery'
+   (0.2ms)  begin transaction
+   (0.1ms)  rollback transaction
+=> #<Beer:0x00007ffff0667838
+ id: nil,
+ name: "anonymous",
+ style: "watery",
+ brewery_id: nil,
+ created_at: nil,
+ updated_at: nil>
+[6] pry(main)> b.errors
+=> #<ActiveModel::Errors:0x00007ffff065a868
+ @base=
+  #<Beer:0x00007ffff0667838
+   id: nil,
+   name: "anonymous",
+   style: "watery",
+   brewery_id: nil,
+   created_at: nil,
+   updated_at: nil>,
+ @details={:brewery=>[{:error=>:blank}]},
+ @messages={:brewery=>["must exist"]}>
+[7] pry(main)> b.brewery = Brewery.find_by(name: 'Koff')
+  Brewery Load (0.5ms)  SELECT  "breweries".* FROM "breweries" WHERE "breweries"."name" = ? LIMIT ?  [["name", "Koff"], ["LIMIT", 1]]
+=> #<Brewery:0x00007faa5c192db0
+ id: 1,
+ name: "Koff",
+ year: 1897,
+ created_at: Sun, 23 Sep 2018 18:46:02 UTC +00:00,
+ updated_at: Sun, 23 Sep 2018 18:46:02 UTC +00:00>
+[8] pry(main)> b.save
+   (0.1ms)  begin transaction
+  Beer Create (3.1ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "anonymous"], ["style", "watery"], ["brewery_id", 1], ["created_at", "2018-09-26 16:06:55.765335"], ["updated_at", "2018-09-26 16:06:55.765335"]]
+   (29.4ms)  commit transaction
+=> true
+[9] pry(main)> Brewery.create name: BrewDog, year: 2007
+NameError: uninitialized constant BrewDog
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/active_support.rb:74:in `block in load_missing_constant'
+[10] pry(main)> Brewery.create name: "BrewDog", year: 2007
+   (0.1ms)  begin transaction
+  Brewery Create (2.6ms)  INSERT INTO "breweries" ("name", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "BrewDog"], ["year", 2007], ["created_at", "2018-09-26 16:08:15.454916"], ["updated_at", "2018-09-26 16:08:15.454916"]]
+   (32.4ms)  commit transaction
+=> #<Brewery:0x00007ffff14b6df8
+ id: 4,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00>
+[11] pry(main)> b.brewery = Brewery.find_by(name: 'BrewDog')
+  Brewery Load (0.3ms)  SELECT  "breweries".* FROM "breweries" WHERE "breweries"."name" = ? LIMIT ?  [["name", "BrewDog"], ["LIMIT", 1]]
+=> #<Brewery:0x00007ffff1462050
+ id: 4,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00>
+[12] pry(main)> b.Beer.create name: "Punk IPA", style: IPA
+NoMethodError: undefined method `Beer' for #<Beer:0x00007ffff0667838>
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activemodel-5.2.1/lib/active_model/attribute_methods.rb:430:in `method_missing'
+[13] pry(main)> b.Beer.new name: "Punk IPA", style: IPA
+NoMethodError: undefined method `Beer' for #<Beer:0x00007ffff0667838>
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activemodel-5.2.1/lib/active_model/attribute_methods.rb:430:in `method_missing'
+[14] pry(main)> c = Beer.new name: "Punk IPA", style: IPA
+NameError: uninitialized constant IPA
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/active_support.rb:74:in `block in load_missing_constant'
+[15] pry(main)> c = Beer.new name: "Punk IPA", style: "IPA"
+=> #<Beer:0x00007ffff11fce28
+ id: nil,
+ name: "Punk IPA",
+ style: "IPA",
+ brewery_id: nil,
+ created_at: nil,
+ updated_at: nil>
+[16] pry(main)> c.brewery = b
+ActiveRecord::AssociationTypeMismatch: Brewery(#70368611768400) expected, got #<Beer id: 8, name: "anonymous", style: "watery", brewery_id: 4, created_at: "2018-09-26 16:06:55", updated_at: "2018-09-26 16:06:55"> which is an instance of Beer(#70368620907120)
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/associations/association.rb:238:in `raise_on_type_mismatch!'
+[17] pry(main)> b
+=> #<Beer:0x00007ffff0667838
+ id: 8,
+ name: "anonymous",
+ style: "watery",
+ brewery_id: 4,
+ created_at: Wed, 26 Sep 2018 16:06:55 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:06:55 UTC +00:00>
+[18] pry(main)> b = Brewery.find_by(name: 'BrewDog')
+  Brewery Load (0.6ms)  SELECT  "breweries".* FROM "breweries" WHERE "breweries"."name" = ? LIMIT ?  [["name", "BrewDog"], ["LIMIT", 1]]
+=> #<Brewery:0x00007ffff1005b38
+ id: 4,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00>
+[19] pry(main)> c.brewery = b
+=> #<Brewery:0x00007ffff1005b38
+ id: 4,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00>
+[20] pry(main)> b
+=> #<Brewery:0x00007ffff1005b38
+ id: 4,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00>
+[21] pry(main)> b.Beer
+NoMethodError: undefined method `Beer' for #<Brewery:0x00007ffff1005b38>
+Did you mean?  beers
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activemodel-5.2.1/lib/active_model/attribute_methods.rb:430:in `method_missing'
+[22] pry(main)> b.Beers
+NoMethodError: undefined method `Beers' for #<Brewery:0x00007ffff1005b38>
+Did you mean?  beers=
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activemodel-5.2.1/lib/active_model/attribute_methods.rb:430:in `method_missing'
+[23] pry(main)> b.Beers
+NoMethodError: undefined method `Beers' for #<Brewery:0x00007ffff1005b38>
+Did you mean?  beers=
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activemodel-5.2.1/lib/active_model/attribute_methods.rb:430:in `method_missing'
+[24] pry(main)> b
+=> #<Brewery:0x00007ffff1005b38
+ id: 4,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:08:15 UTC +00:00>
+[25] pry(main)> b.beers
+  Beer Load (0.4ms)  SELECT "beers".* FROM "beers" WHERE "beers"."brewery_id" = ?  [["brewery_id", 4]]
+=> []
+[26] pry(main)> c
+=> #<Beer:0x00007ffff11fce28
+ id: nil,
+ name: "Punk IPA",
+ style: "IPA",
+ brewery_id: 4,
+ created_at: nil,
+ updated_at: nil>
+[27] pry(main)> b.beers << c
+   (0.5ms)  begin transaction
+  Beer Create (2.6ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Punk IPA"], ["style", "IPA"], ["brewery_id", 4], ["created_at", "2018-09-26 16:15:35.850331"], ["updated_at", "2018-09-26 16:15:35.850331"]]
+   (36.6ms)  commit transaction
+=> [#<Beer:0x00007ffff11fce28
+  id: 9,
+  name: "Punk IPA",
+  style: "IPA",
+  brewery_id: 4,
+  created_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00,
+  updated_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00>]
+[28] pry(main)> c
+=> #<Beer:0x00007ffff11fce28
+ id: 9,
+ name: "Punk IPA",
+ style: "IPA",
+ brewery_id: 4,
+ created_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00>
+[29] pry(main)> c = Beer.new name: "Nanny State", style: "lowalchohol"
+=> #<Beer:0x00007ffff149c228
+ id: nil,
+ name: "Nanny State",
+ style: "lowalchohol",
+ brewery_id: nil,
+ created_at: nil,
+ updated_at: nil>
+[30] pry(main)> b.beers << c
+   (0.2ms)  begin transaction
+  Beer Create (2.7ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Nanny State"], ["style", "lowalchohol"], ["brewery_id", 4], ["created_at", "2018-09-26 16:16:46.976653"], ["updated_at", "2018-09-26 16:16:46.976653"]]
+   (30.2ms)  commit transaction
+=> [#<Beer:0x00007ffff11fce28
+  id: 9,
+  name: "Punk IPA",
+  style: "IPA",
+  brewery_id: 4,
+  created_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00,
+  updated_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00>,
+ #<Beer:0x00007ffff149c228
+  id: 10,
+  name: "Nanny State",
+  style: "lowalchohol",
+  brewery_id: 4,
+  created_at: Wed, 26 Sep 2018 16:16:46 UTC +00:00,
+  updated_at: Wed, 26 Sep 2018 16:16:46 UTC +00:00>]
+[31] pry(main)> c.ratings.create score: 10
+   (0.1ms)  begin transaction
+  Rating Create (3.1ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 10], ["beer_id", 10], ["created_at", "2018-09-26 16:17:31.740030"], ["updated_at", "2018-09-26 16:17:31.740030"]]
+   (33.5ms)  commit transaction
+=> #<Rating:0x00007faa5c13ed50
+ id: 4,
+ score: 10,
+ beer_id: 10,
+ created_at: Wed, 26 Sep 2018 16:17:31 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:17:31 UTC +00:00>
+[32] pry(main)> c.ratings.create score: 7
+   (0.1ms)  begin transaction
+  Rating Create (3.0ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 7], ["beer_id", 10], ["created_at", "2018-09-26 16:17:39.205317"], ["updated_at", "2018-09-26 16:17:39.205317"]]
+   (24.5ms)  commit transaction
+=> #<Rating:0x00007ffff12520f8
+ id: 5,
+ score: 7,
+ beer_id: 10,
+ created_at: Wed, 26 Sep 2018 16:17:39 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:17:39 UTC +00:00>
+[33] pry(main)> c.ratings.create score: 8
+   (0.1ms)  begin transaction
+  Rating Create (52.4ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 8], ["beer_id", 10], ["created_at", "2018-09-26 16:17:41.657272"], ["updated_at", "2018-09-26 16:17:41.657272"]]
+   (27.5ms)  commit transaction
+=> #<Rating:0x00007ffff112b8a0
+ id: 6,
+ score: 8,
+ beer_id: 10,
+ created_at: Wed, 26 Sep 2018 16:17:41 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:17:41 UTC +00:00>
+[34] pry(main)> c = Beers.find_by(name: 'BrewDog')
+NameError: uninitialized constant Beers
+from /root/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/active_support.rb:74:in `block in load_missing_constant'
+[35] pry(main)> c = Beer.find_by(name: 'BrewDog')
+  Beer Load (0.5ms)  SELECT  "beers".* FROM "beers" WHERE "beers"."name" = ? LIMIT ?  [["name", "BrewDog"], ["LIMIT", 1]]
+=> nil
+[36] pry(main)> c = Beer.find_by(name: 'Punk IPA')
+  Beer Load (0.3ms)  SELECT  "beers".* FROM "beers" WHERE "beers"."name" = ? LIMIT ?  [["name", "Punk IPA"], ["LIMIT", 1]]
+=> #<Beer:0x00007ffff0b47bf0
+ id: 9,
+ name: "Punk IPA",
+ style: "IPA",
+ brewery_id: 4,
+ created_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:15:35 UTC +00:00>
+[37] pry(main)> c.ratings.create score: 20
+   (0.1ms)  begin transaction
+  Rating Create (2.8ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 20], ["beer_id", 9], ["created_at", "2018-09-26 16:19:58.900200"], ["updated_at", "2018-09-26 16:19:58.900200"]]
+   (32.2ms)  commit transaction
+=> #<Rating:0x00007ffff074cac8
+ id: 7,
+ score: 20,
+ beer_id: 9,
+ created_at: Wed, 26 Sep 2018 16:19:58 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:19:58 UTC +00:00>
+[38] pry(main)> c.ratings.create score: 18
+   (0.1ms)  begin transaction
+  Rating Create (2.7ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 18], ["beer_id", 9], ["created_at", "2018-09-26 16:20:01.971739"], ["updated_at", "2018-09-26 16:20:01.971739"]]
+   (28.0ms)  commit transaction
+=> #<Rating:0x00007ffff03ba018
+ id: 8,
+ score: 18,
+ beer_id: 9,
+ created_at: Wed, 26 Sep 2018 16:20:01 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:20:01 UTC +00:00>
+[39] pry(main)> c.ratings.create score: 21
+   (0.1ms)  begin transaction
+  Rating Create (3.0ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 21], ["beer_id", 9], ["created_at", "2018-09-26 16:20:04.768128"], ["updated_at", "2018-09-26 16:20:04.768128"]]
+   (28.4ms)  commit transaction
+=> #<Rating:0x00007fffefa17f10
+ id: 9,
+ score: 21,
+ beer_id: 9,
+ created_at: Wed, 26 Sep 2018 16:20:04 UTC +00:00,
+ updated_at: Wed, 26 Sep 2018 16:20:04 UTC +00:00>
