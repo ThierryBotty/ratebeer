@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def average_of(ratings)
-      ratings.sum(&:score).to_f / ratings.count
+    ratings.sum(&:score).fdiv(ratings.size)
   end
 
   def favorite_brewery

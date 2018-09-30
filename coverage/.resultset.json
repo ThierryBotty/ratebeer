@@ -75,7 +75,7 @@
         null,
         null,
         1,
-        12,
+        7,
         null,
         6,
         null,
@@ -191,9 +191,9 @@
         1,
         null,
         1,
-        73,
+        108,
         null,
-        18,
+        45,
         null,
         null,
         1,
@@ -366,7 +366,7 @@
       "/mnt/c/Users/markt/desktop/ruby/ratebeer/app/controllers/ratings_controller.rb": [
         1,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -664,6 +664,6 @@
         0
       ]
     },
-    "timestamp": 1538341216
+    "timestamp": 1538343052
   }
 }
