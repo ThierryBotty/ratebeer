@@ -1,8 +1,14 @@
 language: ruby
-
 rvm:
 - 2.5.1
-
 script:
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: go30zR4OGLgD7/d6hoy53IFe3ZgpGn8jtCrGKNgJwudX7AfiuLrXmyGBO1XbUojVV0udjkADn4H/j+XTFjiZgKf2G/lKuEED2+UOK7Plzo//aP3byHTgCxNrO2RFI5vprR13so+MBn10rugfqz+fkfFGu1jgXz83Phs9xxwdHBw+MmPQhdGp4OQQ6FCb7XQaTtb4n9yNXKtHd2LVrz6V0VzzOIm4SympbY4Fv8j0ErE/YMyakyCK9y2VKbEZmM/nr7OE4lFBuMCV1fkmaYUB4BijQOiVJ8Z99+O/7xej7tSimF06XSOgzew7Zvp/uCXjmvrKiZUMCUVSOP7ziuyzXRajjwH7/VQb5yTrs7QLczsozDP7GFjmsT2ba03IfD7ECxiCtdddWMJge2lflXtrue2V5ElrqFgztO7mOPqpjkUuh0aXcDVxAlxfsElicCnZuxfJbvlVBDoZq7lEJU8nNvSTlknXxH9kTVv5Qe/mWZ4vF30fZQAcv/UEv5qb9uj8Isc8WzOh2gTG7NjufvHXq0ug98MINZlhvEG/DpuvxgrJZgktJi7MKM0KIW/VobzHclZAqW+yqLE3bFAeQyjDDZDnjIJApdUdiyQgXKWd/Ll650d6dzCdC5QOhV2er0KXpCzfECOYHvkRsAuE+q9z98uQsUAWQYnoztdtHgj4HF4=
+  run: "rake db:migrate"
+  app: thierrys-breweries
+  on:
+    repo: ThierryBotty/ratebeer
