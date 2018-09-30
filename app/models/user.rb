@@ -14,4 +14,10 @@ class User < ApplicationRecord
                        format: { with: /.*(([A-Z].*\d)|(\d.*[A-Z])).*/,
                                  message:
                                  "needs at least a capital letter and a digit" }
+
+  def favorite_beer
+    return nil if ratings.empty?
+
+    ratings.order(score: :desc).limit(1).first.beer
+  end
 end
