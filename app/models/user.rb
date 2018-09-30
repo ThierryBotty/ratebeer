@@ -33,8 +33,8 @@ class User < ApplicationRecord
   end
 
   def average_of(ratings)
-      ratings.average(:score)
-    end
+      ratings.sum(&:score).to_f / ratings.count
+  end
 
   def favorite_brewery
     return nil if ratings.empty?
