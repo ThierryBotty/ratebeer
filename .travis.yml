@@ -12,3 +12,5 @@ deploy:
   app: thierrys-breweries
   on:
     repo: ThierryBotty/ratebeer
+env:
+  -BEERMAPPING_APIKEY: b7136901d666b8c9efe033e2eb0a03ee
