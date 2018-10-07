@@ -6,7 +6,6 @@ include ActionView::Helpers::TextHelper
 describe "User" do
   let!(:user) { FactoryBot.create :user }
   before :each do
-
   end
 
   describe "who has signed up" do
@@ -33,11 +32,11 @@ describe "User" do
 
     expect{
       click_button('Create User')
-    }.to change{User.count}.by(1)
+    }.to change{ User.count }.by(1)
   end
 
   describe "user ratings" do
-    let(:user1){FactoryBot.create :user, username: "toinne"}
+    let(:user1){ FactoryBot.create :user, username: "toinne" }
 
     it "should not have any ratings" do
       visit user_path(user)
@@ -45,14 +44,14 @@ describe "User" do
     end
 
     it "should have one rating" do
-      create_beer_with_rating({ user: user }, 11 )
+      create_beer_with_rating({ user: user }, 11)
       visit user_path(user)
       expect(page).to have_content "Has made 1 rating"
     end
 
     it "should have some ratings" do
-      create_beers_with_many_ratings( {user: user}, 10, 15, 9)
-      create_beers_with_many_ratings( {user: user1}, 11, 25, 19)
+      create_beers_with_many_ratings({ user: user }, 10, 15, 9)
+      create_beers_with_many_ratings({ user: user1 }, 11, 25, 19)
       visit user_path(user)
       @user = user
       expect(page).to have_content "Has made 3 ratings"
@@ -69,7 +68,7 @@ describe "User" do
       visit user_path(user)
       expect{
         page.find_link(href: '/ratings/1').click
-      }.to change{Rating.count}.by(-1)
+      }.to change{ Rating.count }.by(-1)
     end
   end
 end

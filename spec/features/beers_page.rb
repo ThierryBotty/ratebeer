@@ -16,8 +16,7 @@ describe "Beers page" do
 
       expect{
         click_button('Create Beer')
-      }.to change{Beer.count}.by(1)
-
+      }.to change{ Beer.count }.by(1)
     end
 
     it "can't add a beer without a name" do
@@ -27,7 +26,7 @@ describe "Beers page" do
 
       expect{
         click_button('Create Beer')
-      }.to change{Beer.count}.by(0)
+      }.to change{ Beer.count }.by(0)
       expect(page).to have_content "Name can't be blank"
     end
   end
