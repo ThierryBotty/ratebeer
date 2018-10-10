@@ -191,7 +191,7 @@
         1,
         null,
         1,
-        120,
+        114,
         null,
         45,
         null,
@@ -277,7 +277,7 @@
       "/mnt/c/Users/markt/desktop/ruby/ratebeer/app/models/place.rb": [
         1,
         1,
-        6,
+        0,
         null,
         null
       ],
@@ -295,10 +295,25 @@
         2,
         0,
         null,
+        2,
+        0,
+        0,
         null,
+        null,
+        null
+      ],
+      "/mnt/c/Users/markt/desktop/ruby/ratebeer/lib/apixu_api.rb": [
+        1,
+        1,
         2,
         2,
+        0,
         null,
+        null,
+        1,
+        2,
+        null,
+        2,
         null,
         null
       ],
@@ -492,6 +507,8 @@
         null,
         0,
         0,
+        0,
+        0,
         null,
         null,
         0,
@@ -571,6 +588,11 @@
         null,
         null,
         null,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         null,
@@ -677,6 +699,7 @@
         0,
         0,
         0,
+        0,
         null,
         null,
         null,
@@ -726,6 +749,6 @@
         0
       ]
     },
-    "timestamp": 1539165457
+    "timestamp": 1539203947
   }
 }
