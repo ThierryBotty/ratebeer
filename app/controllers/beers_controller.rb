@@ -83,4 +83,9 @@ class BeersController < ApplicationController
   def beer_params
     params.require(:beer).permit(:name, :style, :brewery_id)
   end
+
+  def set_breweries_and_styles_for_template
+    @breweries = Brewery.all
+    @styles = Style.all
+  end
 end

@@ -6,11 +6,12 @@ describe "Beers page" do
   before :each do
     FactoryBot.create :user
     FactoryBot.create :brewery
+    FactoryBot.create(:style)
+    sign_in(username: "Pekka", password: "Foobar1")
   end
 
   describe "can add a beer" do
-    it "can be added if name is valid" do
-      sign_in(username: "Pekka", password: "Foobar1")
+    it "can be added if name is valid" do      
       visit new_beer_path
       fill_in('beer_name', with: 'kalja')
 
@@ -20,7 +21,6 @@ describe "Beers page" do
     end
 
     it "can't add a beer without a name" do
-      sign_in(username: "Pekka", password: "Foobar1")
       visit new_beer_path
       fill_in('beer_name', with: '')
 
