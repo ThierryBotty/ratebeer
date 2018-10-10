@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get 'kaikki_bisset', to: 'beers#index'
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
-  get 'places', to: 'places#index'
   delete 'signout', to: 'sessions#destroy'
-  post 'places', to:'places#search'
+
   resource :session, only: [:new, :create, :destroy]
   resources :ratings, only: [:index, :new, :create]
   resources :ratings, only: [:index, :new, :create, :destroy]
