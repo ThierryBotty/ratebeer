@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Beers</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -29,5 +27,8 @@
 
 <br>
 
-<%= link_to('New Beer', new_beer_path) if current_user %> |
+<%= link_to('New Beer', new_beer_path) if current_user %>
+
+<br>
+
 <%= link_to "List of Breweries", breweries_path %>
