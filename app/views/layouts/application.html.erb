@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -40,17 +40,19 @@
             <%= link_to 'places', places_path, { class: "nav-link" } %>
           </li>
           <% if current_user %>
-            <li class="nav-item">
-              <%= link_to current_user.username, current_user, { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'rate a beer ', new_rating_path, { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'join a club ', new_membership_path, { class: "nav-link" } %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'signout', signout_path, { class: "nav-link", method: :delete  } %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'my page', current_user, { class: "dropdown-item" } %>
+                <%= link_to 'rate a beer ', new_rating_path, { class: "dropdown-item" } %>
+                <%= link_to 'join a club ', new_membership_path, { class: "dropdown-item" } %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'signout', signout_path, { class: "dropdown-item", method: :delete } %>
+
+              </div>
             </li>
           <% else %>
             <li class="nav-item">
@@ -70,17 +72,13 @@
           <%= notice %>
         </div>
       <% end %>
-      
+
       <div class="row">
         <div class="col-sm-8">
           <%= yield %>
         </div>
         <div class="col-sm-4">
-          <img
-            src="http://www.cs.helsinki.fi/u/mluukkai/wadror/pint.jpg"
-            width="200"
-            style="padding-top:30px"
-          >
+          <img src="http://www.cs.helsinki.fi/u/mluukkai/wadror/pint.jpg" width="200" style="padding-top:30px">
         </div>
       </div>
     </div>

@@ -1,11 +1,100 @@
 <h2>List of ratings</h2>
 
-<ul>
- <% @ratings.each do |rating| %>
-   <li> <%= rating %> <%= link_to rating.user.username, rating.user %></li>
- <% end %>
-</ul>
+<div class="row">
+  <div class="col-4">
+    <h3>Best beers</h3>
 
-<p> Number of ratings: <%= @ratings.count %> </p>
+    <table class="table">
+      <tr>
+        <th>Beer</th>
+        <th>average</th>
+      </tr>
+      <% @best_beers.each do |r| %>
+        <tr>
+          <td>
+            <%= link_to r.name, r %>
+          </td>
+          <td>
+            <%= r.average_rating %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="col-4">
+    <h3>Best breweries</h3>
+
+    <table class="table">
+      <tr>
+        <th>Brewery</th>
+        <th>average</th>
+      </tr>
+      <% @best_breweries.each do |r| %>
+        <tr>
+          <td>
+            <%= link_to r.name, r %>
+          </td>
+          <td>
+            <%= r.average_rating %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-4">
+    <h3>Best styles</h3>
+
+    <table class="table">
+      <tr>
+        <th>Style</th>
+        <th>average</th>
+      </tr>
+      <% @best_styles.each do |r| %>
+        <tr>
+          <td>
+            <%= link_to r.name, r %>
+          </td>
+          <td>
+            <%= r.average_rating %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<h3>Most active users</h3>
+<table class="table">
+  <tr>
+    <th>User</th>
+    <th>Ratings</th>
+  </tr>
+  <% @most_active_users.each do |u| %>
+    <tr>
+      <td>
+        <%= link_to u.username, u %>
+      </td>
+      <td>
+        <%= u.ratings.count || 0 %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  Recent ratings:
+  <ul>
+    <% @ratings.recent.each do |r| %>
+      <li>
+        <%= link_to r, r.beer.name %>
+        by
+        <%= link_to r.user.username, r.user %>
+        at
+        <%= r.created_at %>
+      </li>
+    <% end %>
+  </ul>
+</p>
 
 <%= link_to 'New Rating', 'ratings/new' %>

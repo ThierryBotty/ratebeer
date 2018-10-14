@@ -35,6 +35,7 @@ gem 'httparty'
 
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
+gem 'execjs'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

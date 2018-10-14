@@ -1,0 +1,131 @@
+[33mcommit 465088810d03e013020536e9c0f1e37365c85794[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sat Oct 13 00:43:55 2018 +0300
+
+    updated css styles
+
+[33mcommit c1a6fd70fc42c03eb23a98a8329d892765efbd04[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Thu Oct 11 01:53:40 2018 +0300
+
+    minor fixes
+
+[33mcommit 2e62541b127a123fab6051dc761a5490b7f0f1fa[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Thu Oct 11 01:31:38 2018 +0300
+
+    added styles
+
+[33mcommit 01a629b9236c5f3802f0b2fb4658c1ff49d70c6b[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Wed Oct 10 23:58:10 2018 +0300
+
+    fixed information for any place
+
+[33mcommit 6b7ac294d91a4a865a350ef68f9f335e97bf42e2[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Wed Oct 10 23:45:25 2018 +0300
+
+    removed broken tests
+
+[33mcommit 392caec125d1dc27c087233071a5804c7447c6db[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Wed Oct 10 23:33:06 2018 +0300
+
+    added weather, fixed minor issues, last version before minor database change
+
+[33mcommit b7daa3aa816817e31b2a3077dff1a659bd742066[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Mon Oct 8 01:22:23 2018 +0300
+
+    minor edits
+
+[33mcommit ead967edc3ae395ce772bd55bdda6f9d7131eb31[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Oct 7 23:57:31 2018 +0300
+
+    travis conf
+
+[33mcommit 2c7c232bf2bd9476a84e3e2294b740a2e5d0ebf4[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Oct 7 23:37:12 2018 +0300
+
+    week 5
+
+[33mcommit 0255ee02d058b64b3878ae863f26a0ffda8cf907[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Mon Oct 1 00:34:26 2018 +0300
+
+    passed tests
+
+[33mcommit 4663571a14654de9f5ca258bd8a1d33e8bc3ec00[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Mon Oct 1 00:02:57 2018 +0300
+
+    bug fix
+
+[33mcommit fd41f08f7a7cae59fa8974152b888187e29e4b50[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Sep 30 23:57:30 2018 +0300
+
+    viikko 4
+
+[33mcommit 43e004e089fe0ddf278d5d77587b00bedc477b74[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Sep 30 23:14:17 2018 +0300
+
+    travis final stuff
+
+[33mcommit 31d0535a2711c7ace9d784589ea99becf289d574[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Sep 30 22:48:23 2018 +0300
+
+    travis.yml
+
+[33mcommit bb2ff2e27f1bee210e51fdac354c1c733edc8cbc[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Sep 30 22:43:43 2018 +0300
+
+    travis lisätty
+
+[33mcommit 6d5b5f25652a1738fdf1311bc14d722d242cb777[m
+Author: Thierry Botty <thierry.botty@helsinki.fi>
+Date:   Sun Sep 30 22:34:54 2018 +0300
+
+    viikko 3.10
+
+[33mcommit d9fc277b24451760fcd0064522a588389f29ddf6[m
+Author: Thierry Botty <root@Sorkkaeläin4.localdomain>
+Date:   Sun Sep 30 03:59:04 2018 +0300
+
+    viikko 3.01
+
+[33mcommit 99d236c5b449525144b5dcaacd100eaa169c7401[m
+Author: root <root@Sorkkaeläin4.localdomain>
+Date:   Sun Sep 30 03:50:52 2018 +0300
+
+    viikko3
+
+[33mcommit 86939d7de5c9a35ed511e5a253c7552b7236e4b0[m
+Author: root <root@Sorkkaeläin4.localdomain>
+Date:   Thu Sep 27 00:34:32 2018 +0300
+
+    Viikko2
+
+[33mcommit a85ad0e4986e836eac059d50022ab4251a699a84[m
+Author: root <root@Sorkkaeläin4.localdomain>
+Date:   Sun Sep 23 22:35:22 2018 +0300
+
+    heroku appi
+
+[33mcommit 9dda903fababe77646e76582882a2030772018e8[m
+Author: Thierry <thierry.botty@helsinki.fi>
+Date:   Thu Sep 20 21:51:00 2018 +0300
+
+    versio 0.1
+
+[33mcommit c35164d14d469c1a1ebc664bcbccb8fe9f3d46f0[m
+Author: Thierry <thierry.botty@helsinki.fi>
+Date:   Sun Sep 16 19:25:53 2018 +0300
+
+    initial commit

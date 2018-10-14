@@ -10,7 +10,7 @@
 
 <p>
   <strong>Brewery:</strong>
-  <%= @beer.brewery_id %>
+  <%= link_to @beer.brewery.name, @beer.brewery %>
 </p>
 
 <p>
@@ -27,9 +27,8 @@
   <%= form_for(@rating) do |f| %>
     <%= f.hidden_field :beer_id %>
     score: <%= f.number_field :score %>
-    <%= f.submit %>
+    <%= f.submit class:"btn btn-primary"%>
   <% end %>
 
-  <%= link_to 'Edit', edit_beer_path(@beer) %>
-  <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= edit_and_destroy_buttons(@beer) %>
 <% end %>
