@@ -1,6 +1,6 @@
 module ApplicationHelper
   def edit_and_destroy_buttons(item)
-    return if current_user.nil?
+    return if current_user.nil? || current_user.admin != true
 
     edit = link_to('Edit', url_for([:edit, item]), class: "btn btn-warning")
     del = link_to('Destroy', item, method: :delete,
