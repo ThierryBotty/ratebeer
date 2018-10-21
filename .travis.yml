@@ -1,6 +1,8 @@
 language: ruby
 rvm:
 - 2.5.1
+addons:
+  chrome: stable
 script:
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
