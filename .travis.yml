@@ -2,6 +2,7 @@ language: ruby
 rvm:
 - 2.5.1
 script:
+- xvfb-run make test
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
 deploy:
@@ -14,3 +15,4 @@ deploy:
     repo: ThierryBotty/ratebeer
 env:
   -BEERMAPPING_APIKEY: b7136901d666b8c9efe033e2eb0a03ee
+  -APIXU_APIKEY: 278e909de30140c3950165341181010
