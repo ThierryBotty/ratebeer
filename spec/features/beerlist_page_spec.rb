@@ -26,9 +26,33 @@ end
     @beer3 = FactoryBot.create(:beer, name:"Lechte Weisse", brewery:@brewery3, style:@style3)
   end
 
-  it "shows a known beer", :js => true do
+  it "shows a known beer", js: => true do
     visit beerlist_path
     find('table').find('tr:nth-child(2)')
+    save_and_open_page
     expect(page).to have_content "Nikolai"
+  end
+
+  it "has beers ordered alphabetically", js: true do
+    visit beerlist_path
+    expect(page.find('table').find('tr:nth-child(2)')).to have_content 'Fastenbier'
+    expect(page.find('table').find('tr:nth-child(3)')).to have_content 'Lechte Weisse'
+    expect(page.find('table').find('tr:nth-child(4)')).to have_content 'Nikolai'
+  end
+
+  it "has styles ordered alphabetically", js: true do
+    visit beerlist_path
+    find('#style').click
+    expect(page.find('table').find('tr:nth-child(2)')).to have_content 'Lager'
+    expect(page.find('table').find('tr:nth-child(3)')).to have_content 'Rauchbier'
+    expect(page.find('table').find('tr:nth-child(4)')).to have_content 'Weizen'
+  end
+
+  it "has breweries ordered alphabetically", js: true do
+    visit beerlist_path
+    find('#brewery').click
+    expect(page.find('table').find('tr:nth-child(2)')).to have_content 'Ayinger'
+    expect(page.find('table').find('tr:nth-child(3)')).to have_content 'Koff'
+    expect(page.find('table').find('tr:nth-child(4)')).to have_content 'Schlenkerla'
   end
 end
