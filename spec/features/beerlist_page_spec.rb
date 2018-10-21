@@ -26,7 +26,7 @@ end
     @beer3 = FactoryBot.create(:beer, name:"Lechte Weisse", brewery:@brewery3, style:@style3)
   end
 
-  it "shows a known beer", js: => true do
+  it "shows a known beer", js: true do
     visit beerlist_path
     find('table').find('tr:nth-child(2)')
     save_and_open_page
