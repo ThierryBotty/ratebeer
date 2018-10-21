@@ -11,9 +11,16 @@ class User < ApplicationRecord
                        length: { minimum: 3,
                                  maximum: 30 }
   validates :password, length: { minimum: 4 },
-                       format: { with: /.*[A-Z].*\d|\d.*[A-Z].*/,
+                       format: { with: /[A-Z].*\d|\d.*[A-Z]/,
                                  message:
                                  "needs at least a capital letter and a digit" }
+
+  scope :closed, -> { where closed: true }
+  scope :opened, -> { where closed: [nil, false] }
+
+  def average_of(ratings)
+    ratings.sum(&:score).fdiv(ratings.size)
+  end
 
   def favorite_beer
     return nil if ratings.empty?
@@ -22,28 +29,21 @@ class User < ApplicationRecord
   end
 
   def favorite_style
-    return nil if ratings.empty?
-
-    style_ratings = ratings.group_by{ |r| r.beer.style }
-    averages = style_ratings.map do |style, ratings|
-      { style: style, score: average_of(ratings) }
-    end
-
-    averages.max_by{ |r| r[:score] }[:style]
-  end
-
-  def average_of(ratings)
-    ratings.sum(&:score).fdiv(ratings.size)
+    favorite(:style)
   end
 
   def favorite_brewery
+    favorite(:brewery)
+  end
+
+  def favorite(groupped_by)
     return nil if ratings.empty?
 
-    style_ratings = ratings.group_by{ |r| r.beer.brewery }
-    averages = style_ratings.map do |brewery, ratings|
-      { brewery: brewery, score: average_of(ratings) }
+    grouped_ratings = ratings.group_by{ |r| r.beer.send(groupped_by) }
+    averages = grouped_ratings.map do |group, ratings|
+      { group: group, score: average_of(ratings) }
     end
 
-    averages.max_by{ |r| r[:score] }[:brewery]
+    averages.max_by{ |r| r[:score] }[:group]
   end
 end
