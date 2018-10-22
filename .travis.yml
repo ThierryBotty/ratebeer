@@ -2,8 +2,9 @@ language: ruby
 rvm:
 - 2.5.1
 dist: trusty
+sudo: required
 addons:
-  chrome: stable
+  chrome: beta
 before_install:
   - # start your web application and listen on `localhost`
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
@@ -22,6 +23,3 @@ deploy:
   app: thierrys-breweries
   on:
     repo: ThierryBotty/ratebeer
-env:
-  -BEERMAPPING_APIKEY: b7136901d666b8c9efe033e2eb0a03ee
-  -APIXU_APIKEY: 278e909de30140c3950165341181010
