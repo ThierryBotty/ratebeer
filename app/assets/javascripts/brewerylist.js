@@ -28,7 +28,7 @@ BREWERIES.sort_by_year = () => {
 
 BREWERIES.sort_by_beers = () => {
   BREWERIES.list.sort((a, b) => {
-    return b.beers. - a.beers.count;
+    return b.beers.count - a.beers.count;
   })
 }
 
