@@ -12,8 +12,10 @@
     <% @styles.each do |style| %>
       <tr>
         <td><%= link_to style.name, style %></td>
-        <td><%= link_to 'Edit', edit_style_path(style) %></td>
-        <td><%= link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_style_path(style), class: 'btn btn-primary' %></td>
+          <% if current_user_is_admin %>
+          <td><%= link_to 'Destroy', style, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
