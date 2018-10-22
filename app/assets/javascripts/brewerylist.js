@@ -26,9 +26,9 @@ BREWERIES.sort_by_year = () => {
   })
 }
 
-BREWERIES.sort_by_beers = () => {
+BREWERIES.sort_by_beercount = () => {
   BREWERIES.list.sort((a, b) => {
-    return b.beers.count - a.beers.count;
+    return b.beercount - a.beercount
   })
 }
 
@@ -50,9 +50,9 @@ document.addEventListener("turbolinks:load", () => {
     BREWERIES.show()
   })
 
-  $("#beers").click((e) => {
+  $("#beercount").click((e) => {
     e.preventDefault()
-    BREWERIES.sort_by_beers()
+    BREWERIES.sort_by_beercount()
     BREWERIES.show()
   })
 
