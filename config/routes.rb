@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   # get 'places/:id', to:'places#show'
 
   post 'places', to:'places#search'
+
+  post 'close/:id', to: 'users#close'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'breweries#index'
 end
