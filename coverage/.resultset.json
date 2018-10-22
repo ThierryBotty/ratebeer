@@ -232,35 +232,6 @@
         null,
         null
       ],
-      "/mnt/c/Users/markt/desktop/ruby/ratebeer/app/models/brewery.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        57,
-        null,
-        null,
-        null,
-        4,
-        4,
-        null,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null
-      ],
       "/mnt/c/Users/markt/desktop/ruby/ratebeer/app/controllers/breweries_controller.rb": [
         1,
         1,
@@ -347,6 +318,35 @@
         null,
         null,
         1,
+        0,
+        null,
+        null
+      ],
+      "/mnt/c/Users/markt/desktop/ruby/ratebeer/app/models/brewery.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        45,
+        null,
+        null,
+        null,
+        4,
+        4,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
         0,
         null,
         null
@@ -909,6 +909,6 @@
         0
       ]
     },
-    "timestamp": 1540220239
+    "timestamp": 1540223641
   }
 }
